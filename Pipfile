@@ -5,8 +5,16 @@ name = "pypi"
 
 [packages]
 scipy = "*"
+pandas = "*"
+scikit-learn = "*"
+plotly = "*"
+cufflinks = "*"
 
 [dev-packages]
+jupyter = "*"
+jupyter-nbextensions-configurator = "*"
+jupyter-contrib-nbextensions = "*"
+nb-clean = "*"
 
 [requires]
 python_version = "3.6"
