@@ -4,17 +4,17 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-scipy = "*"
+scipy = "*"  # includes numpy
 pandas = "*"
 scikit-learn = "*"
 plotly = "*"
-cufflinks = "*"
+cufflinks = "*"  # inject plotly into pandas
 
 [dev-packages]
-jupyter = "*"
+jupyter = "*"  # includes ipython kernel
 jupyter-nbextensions-configurator = "*"
 jupyter-contrib-nbextensions = "*"
-nb-clean = "*"
+nb-clean = "*"  # clears output and removes line numbers (use before merge to master)
 
 [requires]
 python_version = "3.6"
