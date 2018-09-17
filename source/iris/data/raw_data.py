@@ -67,3 +67,39 @@ def write_raw_data(dirout: Union[str, Path]=RAW_DATA_DIR, *,
     bunch['target'].tofile(paths['target'], COL_SEP)
     _list_to_file(bunch['target_names'].tolist(), paths['target_names'])
     _str_to_file(bunch['DESCR'], paths['DESCR'])
+
+
+def read_raw_data(dirin: Union[str, Path]=RAW_DATA_DIR) -> pd.DataFrame:
+    din = Path(dirin)
+    if not din.exists():
+        raise FileNotFoundError(din)
+
+    # Read data
+    fin = din.joinpath(BUNCH_TO_FILE['data'])
+    data = np.fromfile(file=fin, dtype=DATA_DTYPE, sep=COL_SEP)
+
+    fin = din.joinpath(BUNCH_TO_FILE['feature_names'])
+    feature_names = _list_from_file(fin)
+
+    fin = din.joinpath(BUNCH_TO_FILE['target'])
+    target = np.fromfile(file=fin, dtype=TARGET_DTYPE, sep=COL_SEP)
+
+    fin = din.joinpath(BUNCH_TO_FILE['target_names'])
+    target_names = _list_from_file(fin)
+
+    # Make DataFrame of features
+    df = pd.DataFrame(data=data, columns=feature_names)
+
+    # Make Series of target
+    ss_target = pd.Series()
+
+    # Make CategoricalDtype of target classes
+    dt_species = pd.Categorical.from_codes(list(range(target_names)), target_names)
+
+    # Convert Series of target to CategoricalDtype
+    ss_species = ss_target.astype(dt_species)
+
+    # Concatenate Series of categorical target to DataFrame
+    df['series'] = ss_species
+
+    return df
