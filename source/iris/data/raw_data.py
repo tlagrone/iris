@@ -103,3 +103,21 @@ def read_raw_data(dirin: Union[str, Path]=RAW_DATA_DIR) -> pd.DataFrame:
     df['series'] = ss_species
 
     return df
+<<<<<<< Updated upstream
+=======
+
+
+def main(args: List[str]=sys.argv) -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument('dirout',
+                        nargs='?',
+                        default=RAW_DATA_DIR,
+                        help="the directory into which to write the raw data filess")
+    args = parser.parse_args(args)
+
+    write_raw_data(args.dirout)
+
+
+if __name__ == '__main__':
+    main()
+>>>>>>> Stashed changes
