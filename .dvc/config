@@ -1,0 +1,4 @@
+['remote "storage"']
+url = E:\Dropbox (Trintech)\Dropbox (Trintech)\Architecture\Projects\Machine Learning\iris-dvc-storage
+[core]
+remote = storage
