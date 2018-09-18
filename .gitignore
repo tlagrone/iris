@@ -106,7 +106,7 @@ venv.bak/
 .mypy_cache/
 
 # data
-./data/
+# ./data/  # not necessary (counterproductive, actually) since using DVC
 
 # configuration
 config/

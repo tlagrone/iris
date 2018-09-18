@@ -1,0 +1,21 @@
+cmd: python ..\..\iris\data\init_raw_data.py .\
+deps:
+- md5: 386f3f26f55ed31f8ca58d037aaa6a70
+  path: ../../iris/data/init_raw_data.py
+md5: fdff669c6ae8d5174a476f50979a80f9
+outs:
+- cache: true
+  md5: 5c198acdc2fc0664d43070043297803e
+  path: data.csv
+- cache: true
+  md5: 6fa1c0692e31b78c4f1782fa585fce1d
+  path: feature_names.txt
+- cache: true
+  md5: 954935df4ada179aea512fa35d90f3e6
+  path: target.csv
+- cache: true
+  md5: 56d89b79682c1dc9345f700851eeb758
+  path: target_names.csv
+- cache: true
+  md5: 9abd16c8b32937592b4729696cc71213
+  path: description.txt
