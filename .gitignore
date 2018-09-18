@@ -113,3 +113,6 @@ config/
 
 # builds
 binary/
+
+# virtualenv's
+/env/
