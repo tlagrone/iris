@@ -94,7 +94,7 @@ def read_raw_data(dirin: Union[str, Path]=RAW_DATA_DIR) -> pd.DataFrame:
     ss_target = pd.Series()
 
     # Make CategoricalDtype of target classes
-    dt_species = pd.Categorical.from_codes(list(range(target_names)), target_names)
+    dt_species = pd.Categorical.from_codes(*zip(*enumerate(target_names)))
 
     # Convert Series of target to CategoricalDtype
     ss_species = ss_target.astype(dt_species)
@@ -103,8 +103,6 @@ def read_raw_data(dirin: Union[str, Path]=RAW_DATA_DIR) -> pd.DataFrame:
     df['series'] = ss_species
 
     return df
-<<<<<<< Updated upstream
-=======
 
 
 def main(args: List[str]=sys.argv) -> None:
@@ -120,4 +118,3 @@ def main(args: List[str]=sys.argv) -> None:
 
 if __name__ == '__main__':
     main()
->>>>>>> Stashed changes
