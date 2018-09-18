@@ -1,4 +1,5 @@
 import argparse
+import io
 import os
 import sys
 from pathlib import Path
@@ -8,7 +9,7 @@ import numpy as np
 import pandas as pd
 from sklearn import datasets
 
-RAW_DATA_DIR = os.path.expandvars('$PROJECT_HOME/data/raw')
+RAW_DATA_DIR = os.path.expandvars('$PROJECT_ROOT\\data\\raw')
 
 ROW_SEP = '\n'
 COL_SEP = ','
@@ -62,11 +63,13 @@ def write_raw_data(dirout: Union[str, Path]=RAW_DATA_DIR, *,
     if preexisting_files and not overwrite_data:
         raise FileExistsError(preexisting_files)
 
-    bunch['data'].tofile(paths['data'], COL_SEP)
-    _list_to_file(bunch['feature_names'], paths['feature_names'])
-    bunch['target'].tofile(paths['target'], COL_SEP)
-    _list_to_file(bunch['target_names'].tolist(), paths['target_names'])
-    _str_to_file(bunch['DESCR'], paths['DESCR'])
+    strpaths = {k: str(v) for k, v in paths.items()}
+
+    bunch['data'].tofile(strpaths['data'], COL_SEP)
+    _list_to_file(bunch['feature_names'], strpaths['feature_names'])
+    bunch['target'].tofile(strpaths['target'], COL_SEP)
+    _list_to_file(bunch['target_names'].tolist(), strpaths['target_names'])
+    _str_to_file(bunch['DESCR'], strpaths['DESCR'])
 
 
 def read_raw_data(dirin: Union[str, Path]=RAW_DATA_DIR) -> pd.DataFrame:
@@ -105,13 +108,13 @@ def read_raw_data(dirin: Union[str, Path]=RAW_DATA_DIR) -> pd.DataFrame:
     return df
 
 
-def main(args: List[str]=sys.argv) -> None:
+def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument('dirout',
-                        nargs='?',
+                        type=str,
                         default=RAW_DATA_DIR,
-                        help="the directory into which to write the raw data filess")
-    args = parser.parse_args(args)
+                        help="the directory into which to write the raw data files")
+    args = parser.parse_args()
 
     write_raw_data(args.dirout)
 
