@@ -84,8 +84,10 @@ celerybeat-schedule
 # Environments
 .env
 .venv
+.venvs
 env/
 venv/
+venvs/
 ENV/
 env.bak/
 venv.bak/
@@ -102,3 +104,15 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# data
+# ./data/  # not necessary (counterproductive, actually) since using DVC
+
+# configuration
+config/
+
+# builds
+binary/
+
+# virtualenv's
+/env/
