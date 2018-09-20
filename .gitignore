@@ -1,3 +1,9 @@
+# project root dot files and local configuration directories
+/.env/
+/.git/
+/.jupyter/
+/.vscode/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -104,15 +110,3 @@ venv.bak/
 
 # mypy
 .mypy_cache/
-
-# data
-# ./data/  # not necessary (counterproductive, actually) since using DVC
-
-# configuration
-config/
-
-# builds
-binary/
-
-# virtualenv's
-/env/
