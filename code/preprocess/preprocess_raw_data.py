@@ -1,6 +1,7 @@
 
 
 import csv
+from pathlib import Path
 from typing import Tuple
 
 import numpy as np
@@ -21,11 +22,12 @@ def main():
 
     features, target = preprocess(features, target)
 
-    with open('Data/preprocessed/features.csv', 'w', newline='') as f:
+    Path('Data/preprocessed').mkdir(parents=True, exist_ok=True)
+    with open('Data/preprocessed/features.csv', 'wt', newline='') as f:
         w = csv.writer(f)
         for row in (features[i,:] for i in range(features.shape[0])):
             w.writerow(row)
-    with open('Data/preprocessed/target.csv', 'w', newline='') as f:
+    with open('Data/preprocessed/target.csv', 'wt', newline='') as f:
         w = csv.writer(f)
         for row in (target[i,:] for i in range(features.shape[0])):
             w.writerow(row)
