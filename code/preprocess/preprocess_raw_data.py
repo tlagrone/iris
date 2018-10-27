@@ -14,7 +14,7 @@ def preprocess(features: np.ndarray, target: np.ndarray) -> Tuple[np.ndarray, np
 
 
 def main():
-    features = np.fromfile('Data/raw/data.csv', dtype=np.dtype(int), sep=',')
+    features = np.fromfile('Data/raw/data.csv', dtype=np.dtype(float), sep=',')
     target = np.fromfile('Data/raw/target.csv', dtype=np.dtype(int), sep=',')
 
     features = np.reshape(features, (len(target), -1))
