@@ -1,0 +1,13 @@
+cmd: python .\Code\preprocess\preprocess_raw_data.py
+deps:
+- md5: 5c198acdc2fc0664d43070043297803e
+  path: Data/raw/data.csv
+- md5: 954935df4ada179aea512fa35d90f3e6
+  path: Data/raw/target.csv
+- md5: 360f8254e5b00c6b35566cf439ed2945
+  path: Code/preprocess/preprocess_raw_data.py
+md5: 6133b890c6e8957c0de2ea11cd31410a
+outs:
+- cache: true
+  md5: 6a904ed2138e28de5807b6fb1fc429c7.dir
+  path: Data/preprocessed
